@@ -1,13 +1,17 @@
 const mongoose = require('mongoose')
+const Sets = require('./Sets')
 const Schema = mongoose.Schema
 
-const SpecificExercise = new Schema({
-    title: {
+const SpecificExerciseSchema = new Schema({
+    name: {
         type: String,
         required: true
     },
-    info: {
-        type: String
-    }
+    exercisesets: [{
+        type: Schema.Types.ObjectId, 
+        ref: 'Sets', 
+        required: true
+    }]
 })
-module.exports = mongoose.model('SpecificExercise')
+
+module.exports = mongoose.model('Exercise', SpecificExerciseSchema)

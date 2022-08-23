@@ -1,5 +1,6 @@
 const express = require('express')
-
+const workoutsession = require('../models/Session')
+const ExerciseName = require('../models/exerciseName')
 const router = express.Router()
 
 // GET all workouts (HISTORY)
@@ -24,18 +25,46 @@ router.get('/:id',(req, res) => {
 })
 
 
-
-// POST a new workout
-router.post('/',(req,res) => {
-    res.json({mssg: 'POST a new workout'})
+//////////////////////////////////////////////////////////////////////////////////////////
+// POST a new workout SESSION
+router.post('/session', async (req,res) => {
+    const {SessionRoutine, SessionExercises} = req.body
+    try {
+        if (SessionExercises == undefined){
+            console.log("undefined")
+        }
+        else{
+            console.log("defined")
+        }
+        const session = await workoutsession.create({SessionRoutine, SessionExercises})
+        res.status(200).json(session)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
 })
 
-// DELETE  a workout
+// POST a new ROUTINE 
+
+// POST a new EXERCISE
+
+// POST a new EXERCISE NAME
+router.post('/exercisename', async (req, res) => {
+    const {name, description} = req.body
+    try {
+        const exercisename = await ExerciseName.create({name, description})
+        res.status(200).json(exercisename)
+    }catch(error) {
+        res.status(400).json({error: error.message})
+    }
+})
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// DELETE a workout SESSION
 router.delete('/:id',(req,res) => {
     res.json({mssg: 'DELETE a workout'})
 })
 
-// UPDATE a workout
+// UPDATE a workout SESSIOB
 router.patch('/:id',(req,res) => {
     res.json({mssg: 'UPDATE a workout'})
 })
