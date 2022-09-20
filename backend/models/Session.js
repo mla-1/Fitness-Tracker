@@ -7,7 +7,8 @@ const WorkoutSessionSchema = new Schema({
     SessionRoutine: {
         type: Schema.Types.ObjectId,
         ref: 'Routine',
-        required: false
+        required: false,
+        default: undefined
     },
     SessionExercises : [{
     type: Schema.Types.ObjectId,
