@@ -4,6 +4,8 @@ const Routine = require('../models/Routine')
 const Exercise = require('../models/Exercise')
 const Set = require('../models/Sets')
 
+const mongoose = require('mongoose')
+
 //GET (GET ALL WORKOUT SESSIONS)
 const getworkoutsessions = async(req, res) => {
     const workoutsessions = await workoutsession.find({}).sort({createdAt: -1})
@@ -13,6 +15,10 @@ const getworkoutsessions = async(req, res) => {
 //GET (GET A SINGLE WORKOUT SESSION)
 const getsingleworkoutsession = async(req, res) => {
     const {id} = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such Session"})
+    }
 
     const singlesess = await workoutsession.findById(id)
 
@@ -31,6 +37,11 @@ const getAllWorkoutRoutines = async(req, res) => {
 //GET (GET SINGLE WORKOUT ROUTINE)
 const getSingleWorkoutRoutine = async(req,res) => {
     const {id} = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such Single Routine found"})
+    }
+
     const singleroutine = await Routine.findById(id)
     if (!singleroutine) {
         return res.status(404).json({error: "No such Routine found"})
@@ -45,6 +56,11 @@ const getAllExerciseNames = async(req, res) => {
 //GET (GET SINGLE EXERCISE NAME)
 const getSingleExerciseName = async(req, res) => {
     const {id} = req.params
+    
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such Single Exercise Name found"})
+    }
+
     const singleExerciseName = await ExerciseName.findById(id)
 
     if (!singleExerciseName) {
@@ -55,6 +71,11 @@ const getSingleExerciseName = async(req, res) => {
 //GET (GET AN EXERICSE CONTAINING NAME AND SETS INFO)
 const getExercise = async(req, res) => {
     const {id} = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such Single Exercise found"})
+    }
+
     const singleExercise = await Exercise.findById(id)
 
     if (!singleExercise) {
@@ -65,6 +86,11 @@ const getExercise = async(req, res) => {
 //GET (GET A SET)
 const getSet = async(req, res) => {
     const {id} = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such Single Set found"})
+    }
+
     const singleSet = await Set.findById(id)
 
     if (!singleSet) {
@@ -102,7 +128,7 @@ const createsession = async (req, res) => {
 const createroutine = async (req, res) => {
     const {title, exercises} = req.body
     try {
-        if (title && exericses){
+        if (title && exercises){
             const routine = await Routine.create({title, exercises})
             res.status(400).json(routine)
         }
@@ -140,18 +166,146 @@ const createexercisename = async (req, res) => {
         res.status(400).json({error: error.message})
     }
 }
-
+////////////////////////////////////////////////////////////////////////////
 //DELETE
+const deleteexercisename = async (req, res) => {
+    const { id } = req.params
 
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such exercise name found"})
+    }
 
-//UPDATE
+    const deletedexercisename = await ExerciseName.findOneAndDelete({_id: id})
+    
+    if (! deletedexercisename) {
+        return res.status(200).json({error: 'No such exercise name found'})
+    }
+    
+    res.status(400).json(deletedexercisename)
+}
+const deleteset = async (req, res) => {
+    const { id } = req.params
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such Single Set found"})
+    }
 
+}
+
+const deleteexercise = async (req, res) => {
+    const { id } = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such Exercise found"})
+    }
+    
+    const deletedexercise = await Exercise.findOneAndDelete({_id: id})
+
+    if (! deletedexercise) {
+        return res.status(400).json({error: "No such Exercise found"})
+    }
+
+    res.status(200).json(deletedexercise)
+}
+
+const deleteroutine = async (req, res) => {
+    const { id } = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such Routine found"})
+    }
+
+    const deletedroutine = await Routine.findOneAndDelete({_id: id})
+
+    if (! deletedroutine) {
+        return res.status(400).json({error: "No such Routine found"})
+    }
+    res.status(200).json(deletedroutine)
+}
+
+const deletesession = async (req, res) => {
+    const { id } = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such Session found"})
+    }
+
+    const deletedsession = await Session.findOneAndDelete({_id: id})
+
+    if (! deletedsession) {
+        return res.status(400).json({error: "No such Session found"})
+    }
+    res.status(200).json(deletedsession)
+}
+/////////////////////////////////////////////////////////////////////////////
+//UPDATE 
+const updateExerciseName = async (req, res) => {
+    const { id } = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such Exercise Name found"})
+    }
+
+    const updatedExerciseName = await ExerciseName.findOneAndUpdate({_id : id}, {
+      ...req.body  
+    })
+
+    if (! updatedExerciseName) {
+        return res.status(400).json({error: "No such Exercise name found"})
+    }
+
+    res.status(200).json(updatedExerciseName)
+}
+
+const updateSet = async (req, res) => {
+
+    const { id } = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such Set found"})
+    }
+    const updatedSet = await Set.findOneAndUpdate({_id: id} , {
+        ...req.body
+    })
+    
+    if (! updatedSet) {
+        return res.status(400).json({error: "No such Set found"})
+    }
+
+    res.status(200).json(updatedSet)
+    
+}
+
+const updateExercise = async (req, res) => {
+
+    const { id } = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such Session found"})
+    }
+}
+const updateRoutine = async (req, res) => {
+
+    const { id } = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such Session found"})
+    }
+}
+const updateSession = async (req, res) => {
+
+    const { id } = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error: "No such Session found"})
+    }
+}
 module.exports = {
     createexercisename,
     createset,
     createexercise,
     createroutine,
     createsession,
+
     getworkoutsessions,
     getsingleworkoutsession,
     getAllWorkoutRoutines,
@@ -159,5 +313,13 @@ module.exports = {
     getAllExerciseNames,
     getSingleExerciseName,
     getExercise,
-    getSet
+    getSet,
+
+    deleteexercisename,
+    deleteset,
+    deleteexercise,
+    deleteroutine,
+    deletesession,
+
+
 }

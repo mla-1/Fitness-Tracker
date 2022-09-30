@@ -9,7 +9,7 @@ const RoutineSchema = new Schema({
     },
     exercises: [{ 
         type: Schema.Types.ObjectId, 
-        ref: 'Exercise', 
+        ref: 'exerciseName', 
         required: true
     }]
 })

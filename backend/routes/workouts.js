@@ -19,7 +19,8 @@ const {
     getAllExerciseNames,
     getSingleExerciseName,
     getExercise,
-    getSet
+    getSet,
+    deleteexercise
 } = require('../controllers/WorkoutController')
 
 
@@ -53,19 +54,20 @@ router.post('/session', createsession)
 
 // POST a new ROUTINE 
 router.post('/routine', createroutine) 
+
 // POST a new EXERCISE
 router.post('/exercise', createexercise)
+
 // POST A new SET
 router.post('/set', createset) 
+
 // POST a new EXERCISE NAME
 router.post('/exerciseNames', createexercisename)
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // DELETE a workout SESSION
-router.delete('/:id',(req,res) => {
-    res.json({mssg: 'DELETE a workout'})
-})
+router.delete('/exercise/:id', deleteexercise)
 
 // UPDATE a workout SESSIOB
 router.patch('/:id',(req,res) => {
