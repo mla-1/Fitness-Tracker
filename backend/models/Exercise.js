@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Sets = require('./Sets')
+const { Sets } = require('./Sets')
 const Schema = mongoose.Schema
 
 const SpecificExerciseSchema = new Schema({
@@ -7,11 +7,12 @@ const SpecificExerciseSchema = new Schema({
         type: String,
         required: true
     },
-    exercisesets: [{
-        type: Schema.Types.ObjectId, 
-        ref: 'Sets', 
+    exercisesets: {
+        type: Array, 
+        default: [],
+        data: [Sets],
         required: true
-    }]
+    }
 })
 
 module.exports = mongoose.model('Exercise', SpecificExerciseSchema)

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Exercise = require('./Exercise')
+const exerciseName = require('./exerciseName')
 const Schema = mongoose.Schema
 
 const RoutineSchema = new Schema({
@@ -7,11 +7,12 @@ const RoutineSchema = new Schema({
         type: String,
         required: true
     },
-    exercises: [{ 
-        type: Schema.Types.ObjectId, 
-        ref: 'exerciseName', 
+    exercises: { 
+        type: Array,
+        default: [],
+        data: [exerciseName],
         required: true
-    }]
+    }
 })
 
 module.exports = mongoose.model('Routine', RoutineSchema)

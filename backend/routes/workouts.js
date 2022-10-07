@@ -12,6 +12,7 @@ const {
     createexercise,
     createroutine,
     createsession,
+
     getworkoutsessions,
     getsingleworkoutsession,
     getAllWorkoutRoutines,
@@ -20,7 +21,19 @@ const {
     getSingleExerciseName,
     getExercise,
     getSet,
-    deleteexercise
+
+    deleteexercise,
+    deleteset,
+    deleteexercisename,
+    deleteroutine,
+    deletesession,
+
+    updateExerciseName,
+    updateSet,
+    updateExercise,
+    updateRoutine,
+    updateSession
+
 } = require('../controllers/WorkoutController')
 
 
@@ -67,12 +80,34 @@ router.post('/exerciseNames', createexercisename)
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // DELETE a workout SESSION
+router.delete('/session/:id', deletesession)
+
+// DELETE an Exercise
 router.delete('/exercise/:id', deleteexercise)
 
-// UPDATE a workout SESSIOB
-router.patch('/:id',(req,res) => {
-    res.json({mssg: 'UPDATE a workout'})
-})
+// DELETE an Exercise Name
+router.delete('/exerciseNames/:id', deleteexercisename)
 
+// Delete a Set
+router.delete('/set/:id', deleteset)
+
+// Delete a Routine
+router.delete('/routine/:id', deleteroutine)
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+//UPDATE a workout Session
+router.patch('/session/:id',updateSession)
+//UPDATE an Exercise
+router.patch('/exercise/:id', updateExercise)
+
+//UPDATE an Exercise Name
+router.patch('/exerciseNames/:id', updateExerciseName)
+
+//UPDATE a Set
+router.patch('/set/:id', updateSet)
+
+//Update a Routine
+router.patch('/routine/:id', updateRoutine)
 
 module.exports = router
