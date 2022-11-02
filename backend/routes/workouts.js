@@ -110,4 +110,9 @@ router.patch('/set/:id', updateSet)
 //Update a Routine
 router.patch('/routine/:id', updateRoutine)
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 module.exports = router

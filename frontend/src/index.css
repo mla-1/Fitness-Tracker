@@ -11,3 +11,247 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.typesofexercises{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
+  background-color: rgb(247, 245, 245);
+}
+
+.ExerciseName-Details{
+  background: rgb(255, 255, 255);
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.curTime{
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  
+}
+.home{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sessColor{
+  color: #39b491
+}
+
+.create {
+  position: absolute;
+  left: 80%;
+  top: 7%;
+}
+
+#exercisenameinputform {
+  display: block;
+  margin: 5px;
+}
+
+#exercisenameformbtn {
+  margin-top: 10px;
+  background: #39b491;
+  border: 0;
+  color: #fff;
+}
+
+.history {
+  background-color: rgb(247, 245, 245);
+
+}
+.SessionDetails{
+  background: rgb(255, 255, 255);
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+#exercisebtn {
+  text-align: right;
+  border: 0;
+  margin: 10px;
+  color:#ed6969;
+}
+#ExerciseNameEditBtn {
+  border: 0;
+  color:rgb(0, 0, 0);
+  margin: 10px;
+}
+
+#sessiondelete {
+  border: 0;
+  color:#ed6969;
+  margin: 10px;
+}
+
+#sessioninfo{
+  border: 0;
+  margin: 10px;
+}
+
+#sessionedit{
+  border: 0;
+  margin: 10px;
+}
+.popup {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.2);
+  display: inline;
+  justify-content: center;
+  align-items: center;
+}
+.popup-inner {
+  position: relative; 
+  padding: 32px;
+  width: 100%;
+  max-width: 640px;
+  background-color: #fff;
+}
+
+.popup-inner {
+  position: relative;
+  top: 16px;
+  right: 16px;
+}
+
+.close-btn{
+  border:0px;
+}
+
+#submiteditform{
+  border:0px;
+  background: #39b491;
+  color:#fff;
+  margin-top: 10px;
+}
+
+#historyclose {
+  border: 0;
+}
+
+
+.NewWorkoutPopUp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.NewWorkoutPopup-Inner {
+  position: relative; 
+  padding: 30px;
+  width: 100%;
+  max-width: 800px;
+  background-color: #fff;
+}
+
+#NewWorkoutClose{
+  background-color: black;
+  color: white;
+  border: 0px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+#addexercisebtn {
+  border:0px;
+}
+
+#startsessionbtn{
+  border: 0px;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+#addexercisebtn{
+  position: absolute;
+  left: 42%;
+  right: 42%;
+}
+
+#removeexercisebtn{  
+  border: 0px;
+  color: red;
+  margin-top: 20px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#exerciseinputnamefield{
+  position: relative;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#removebtnforset{
+  border: 0px;
+  margin-left: 10px;
+  background-color: rgb(206, 31, 31);
+  color: white;
+}
+
+.exerciseoptionsbtn{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.setinfo{
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}
+
+#startsessionbtn{
+  margin-top: 20px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#addSet{
+  color: rgb(2, 96, 2);
+  margin-right: 10px;
+  border: 0px;
+}
+
+#donebtn{
+  color: rgb(48, 185, 2);
+  margin-left: 10px;
+  border: 0px;
+}
+
+#clearfields{
+  border: 0px;
+}
+
+.sessionnamefield{
+  margin-top: 40px;
+  position: relative;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+}

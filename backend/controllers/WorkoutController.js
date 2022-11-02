@@ -3,6 +3,7 @@ const ExerciseName = require('../models/exerciseName')
 const Routine = require('../models/Routine')
 const Exercise = require('../models/Exercise')
 const Set = require('../models/Sets')
+const Session = require('../models/Session')
 
 const mongoose = require('mongoose')
 

@@ -19,7 +19,7 @@ const Navigationbar = () => {
                         {/*shows all of the available routines that were made
                         allows user to create more routines */}
 
-                        <NavLink eventKey='5' as={Link} to='/Exercises'>Type of Exercises</NavLink>
+                        <NavLink eventKey='5' as={Link} to='/TypesofExercises'>Types of Exercises</NavLink>
                         {/*shows the name of all of the exercises available 
                         option to allow the user to add or more exercises*/}
                     </Nav>
