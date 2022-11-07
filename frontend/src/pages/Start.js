@@ -8,6 +8,7 @@ const Start = () => {
         <div>
             <main>
             <button id='newworkout-btn'onClick={() => setnewworkoutbtn(true)}>New Workout</button>
+            <button id='routines-btn'>hi</button>
             </main>
 
             <NewWorkout trigger={newworkoutbtn} setTrigger={setnewworkoutbtn}>

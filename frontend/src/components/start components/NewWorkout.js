@@ -11,6 +11,56 @@ const NewWorkout  = (props) => {
 
     const [sessionName, setSessionName] = useState("")
 
+    const [error, setError] = useState(null)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        
+        let Session = {
+            SessionName: '',
+            SessionExercises : []
+        }
+
+        const cur_Session = Session
+
+        cur_Session.SessionName = sessionName
+
+        exerciseSets.map((item,i) => {
+            let exercise = {
+                name : '',
+                exercisesets : []
+            }
+            //const exercise = [exerciseNames[i], exerciseSets[i]]
+            const cur_exercise = exercise
+
+            cur_exercise.name = exerciseNames[i]
+            cur_exercise.exercisesets = exerciseSets[i]
+
+            cur_Session.SessionExercises.push(exercise)
+        })
+        console.log(cur_Session)
+
+        const response = await fetch('/api/workouts/session', {
+            method: 'POST',
+            body: JSON.stringify(cur_Session),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        const json = await response.json()
+
+        if(! response.ok){
+            setError(json.error)
+            console.log(error)
+        }
+
+        if(response.ok){
+            console.log(sessionName, " added!")
+        }
+    }
+
+
     const addExercise = () => {
         setExercisesComp([...exercisesComp, NewWorkoutFormComp])
     }
@@ -41,13 +91,13 @@ const NewWorkout  = (props) => {
     }
 
     return (props.trigger) ? (
-        <div className='NewWorkoutPopUp' onSubmit={showInfo}>
+        <div className='NewWorkoutPopUp' onSubmit={handleSubmit}>
             <div className='NewWorkoutPopup-Inner'>
                 <button id='addexercisebtn'onClick={addExercise}>Add Exercise</button>
 
                 <div className="sessionnamefield">
                 <input id='SessionNameInputField'
-                    type="text"
+                    name='sessionName'
                     placeholder="Session Name"
                     value={sessionName}
                     onChange={event => handleSessionName(event)}
@@ -66,7 +116,7 @@ const NewWorkout  = (props) => {
                     })}
 
                 <button id='NewWorkoutClose'onClick={() => {props.setTrigger(false); setExercisesComp([])}}>close</button>
-                <button id="startsessionbtn" onClick={showInfo}>Submit</button>
+                <button id="startsessionbtn" onClick={handleSubmit}>Submit</button>
                 {props.children}
             </div>
         </div>

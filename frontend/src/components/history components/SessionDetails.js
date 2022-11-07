@@ -14,12 +14,16 @@ const SessionDetails = ({ Session }) => {
 
     const [editdetailspopup, setEditDetailsPopup] = useState(false);
 
+
+    const showinfo = () => {
+        console.log(Session)
+    }
     return (
         <div className="SessionDetails">
             <h1>{Session.SessionName}</h1>
             <p>Session Date: {Session.createdAt}</p>
             <button id='sessiondelete' onClick={handleSession}>Delete</button>
-            <button id='sessioninfo' onClick={() => setDetailsPopup(true)}>Details</button>
+            <button id='sessioninfo' onClick={() => {setDetailsPopup(true);showinfo()}}>Details</button>
             <button id='sessionedit' onClick={() => setEditDetailsPopup(true)}>Edit</button>     
             <HistoryDetailsPopup trigger={detailspopup} setTrigger={setDetailsPopup} Session={Session}>
             </HistoryDetailsPopup>

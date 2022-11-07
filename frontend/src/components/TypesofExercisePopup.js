@@ -6,6 +6,7 @@ const TypesofExercisePopup = (props) => {
         <div className='popup'>
             <div className='popup-inner'>
                 <ExerciseNameEditForm props={props}/>
+                <br></br>
                 <button className='close-btn' onClick={() => props.setTrigger(false)}>Close</button>
                 { props.children}
                 {/* <p>time:{props.exerciseName.name}</p> */}

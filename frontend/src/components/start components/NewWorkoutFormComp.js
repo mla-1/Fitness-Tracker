@@ -2,7 +2,7 @@ import {useState} from 'react'
 
 const NewWorkoutFormComp = ({exerciseNames, exerciseSets, setExerciseNames, setExerciseSets, i}) => {
 
-    const [inputFields, setInputFields ] = useState([{setnumber: '', weight: '', rep: ''}])
+    const [inputFields, setInputFields ] = useState([{setnumber: '', weight: '', reps: ''}])
 
     const [exerciseName, setExerciseName] = useState("")
 
@@ -18,7 +18,7 @@ const NewWorkoutFormComp = ({exerciseNames, exerciseSets, setExerciseNames, setE
         let object = {
             setnumber : '',
             weight : '',
-            rep : ''
+            reps : ''
         }
         setInputFields([...inputFields, object])
     }
@@ -37,7 +37,7 @@ const NewWorkoutFormComp = ({exerciseNames, exerciseSets, setExerciseNames, setE
     }
 
     const clearFields = () => {
-        setInputFields([{setnumber: '', weight: '', rep: ''}]) 
+        setInputFields([{setnumber: '', weight: '', reps: ''}]) 
         setExerciseName("")
       }
 
@@ -81,9 +81,9 @@ const NewWorkoutFormComp = ({exerciseNames, exerciseSets, setExerciseNames, setE
                         onChange={event => handleFormChange(index, event)}
                         />
                         <input
-                        name='rep'
+                        name='reps'
                         placeholder='Rep'
-                        value={input.rep}
+                        value={input.reps}
                         onChange={event => handleFormChange(index, event)}
                         />
                         <button id='removebtnforset'onClick={() => removeFields(index)}>Remove</button>

@@ -58,6 +58,7 @@ code {
 
 #exercisenameformbtn {
   margin-top: 10px;
+  margin-left: 6px;
   background: #39b491;
   border: 0;
   color: #fff;
@@ -80,7 +81,16 @@ code {
   text-align: right;
   border: 0;
   margin: 10px;
-  color:#ed6969;
+  color:white;
+  background-color: #e44444;
+}
+
+#exercisebtn:hover{
+  background-color: #ed6969;
+}
+
+#exercisebtn:active{
+  background-color: #e42424;
 }
 #ExerciseNameEditBtn {
   border: 0;
@@ -90,8 +100,17 @@ code {
 
 #sessiondelete {
   border: 0;
-  color:#ed6969;
+  background-color: #e44444;
+  color: white;
   margin: 10px;
+}
+
+#sessiondelete:hover{
+  background-color: #ed6969;
+}
+
+#sessiondelete:active{
+  background-color: #e42424;
 }
 
 #sessioninfo{
@@ -233,7 +252,6 @@ code {
 }
 
 #addSet{
-  color: rgb(2, 96, 2);
   margin-right: 10px;
   border: 0px;
 }
@@ -254,4 +272,247 @@ code {
   text-align: center;
   left: 50%;
   transform: translateX(-50%);
+}
+
+#newworkout-btn{
+  margin-top: 10px;
+  width:48%;
+  margin-left: 1%;
+  border: 0px;
+  background-color: #39b491;
+  color: white;
+}
+
+#newworkout-btn:active{
+  background-color: #2a8067;
+}
+
+#createroutine-btn{
+  border:0px;
+  width: 100%;
+  margin-top: 10px;
+  background-color: #39b491;
+  color: white;
+  padding: 20px;
+}
+
+#createroutine-btn:hover{
+  background-color: #37ab8a;
+
+}
+
+.RoutinePopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.RoutinePopup-Inner {
+  position: relative; 
+  padding: 30px;
+  width: 100%;
+  max-width: 800px;
+  background-color: #fff;
+}
+
+#RoutinePopupClose-btn{
+  background-color: black;
+  color: white;
+  border: 0px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+#RoutinePopupClose-btn:hover{
+  background-color: rgb(87, 84, 84);
+}
+
+.RoutineNameField{
+  margin-top: 10px;
+  position: relative;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#routinesubmit-btn{
+  background-color: black;
+  color: white;
+  position: relative;
+  left:50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+
+}
+#routinesubmit-btn:hover{
+  background-color: rgb(43, 42, 42);
+}
+
+#routinesubmit-btn:active{
+  background-color: rgb(62, 61, 61);
+}
+
+#RoutineAddExercise-btn{
+  background-color: #39b491;
+  border: 0px;
+  color: white;
+  position: relative;
+  left:50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+}
+
+#RoutineAddExercise-btn:hover{
+  background-color: #3fc19c;
+}
+
+#RoutineAddExercise-btn:active{
+  background-color: #44d6ad;
+}
+
+#exercisenametextfield, #exercisendesctextfield{
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  position: relative;
+  left:50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+}
+
+.routinebuttons{
+  position: relative;
+  left:50%;
+  transform: translateX(-8%);
+  margin-top: 10px;
+}
+
+.routineform{
+  text-align: center;
+  margin-top: 10px;
+}
+
+#routinexercise-add-btn{
+  margin-top: 10px;
+}
+
+#exercisenameinput{
+  margin-right: 5px;
+  text-align: center;
+}
+
+#exercisedescinput{
+  margin-right: 5px;
+  text-align: center;
+}
+
+#exercisefields{
+  margin-bottom: 5px;
+}
+
+#exerciseinputremove-btn{
+  border: 0px;
+  background-color: rgb(206, 31, 31);
+  color: white;
+}
+
+#exerciseinputremove-btn:hover{
+  background-color: rgb(210, 72, 72);
+}
+
+#exerciseinputremove-btn:hover{
+  background-color: rgb(230, 109, 109);
+}
+
+#routinexercise-add-btn{
+  border: 0px;
+  background-color: black;
+  color: white;
+  margin-right: 5px;
+}
+#routinexercise-add-btn:hover{
+  background-color: rgb(40, 40, 40);
+}
+
+#routinexercise-add-btn:active{
+  background-color: rgb(67, 67, 67);
+}
+
+
+#formdone-btn{
+  border: 0px;
+  background-color: #39b491;
+  color: white;
+}
+
+#formdone-btn:hover{
+  background-color: #39c59d;
+
+}
+#formdone-btn:active{
+  background-color: #44d6ad;
+}
+
+#Routine-Card{
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  padding-bottom: 10px;
+}
+#routine-title{
+  margin-top: 10px;
+  padding: 5px;
+  font-weight: bold;
+}
+
+#routine-delete-btn{
+  background-color: #e44444;
+  color:white;
+  border: 0px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+#routine-details-btn{
+  border: 0px;
+}
+
+#routine-delete-btn:hover{
+  background-color: #ed6969;
+}
+
+#routine-delete-btn:active{
+  background-color: #e42424;
+}
+
+#routineinfo-close-btn{
+  margin-left: 5px;
+  border: 0px;
+  color: white;
+  background-color: black;
+}
+#routineinfo-close-btn:active{
+  background-color: rgb(46, 46, 46);
+}
+
+#routineinfo{
+  margin-top: 5px;
+}
+
+#routineexercise-info{
+  margin-left: 5px;
+}
+
+#routines-btn{
+  margin-top: 10px;
+  width: 48%;
+  margin-left: 2%;
+  border: 0px;
+  background-color: #39b491;
+  color: white;
 }
