@@ -3,7 +3,7 @@ import NewWorkoutFormComp from "./NewWorkoutFormComp"
 
 const NewWorkout  = (props) => {
 
-    const [exercisesComp, setExercisesComp] =useState([])
+    const [exercisesComp, setExercisesComp] =  useState([])
 
     const [exerciseNames, setExerciseNames] = useState([])
 
@@ -87,7 +87,7 @@ const NewWorkout  = (props) => {
     }
 
     const handleSessionName = (e) => {
-        setSessionName( e.target.value)        
+        setSessionName(e.target.value)        
     }
 
     return (props.trigger) ? (

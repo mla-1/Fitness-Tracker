@@ -42,8 +42,6 @@ const NewWorkoutFormComp = ({exerciseNames, exerciseSets, setExerciseNames, setE
       }
 
     const testing = () => {
-        //console.log(inputFields)
-        //console.log(exerciseName)
         let data = [...exerciseNames]
         data.splice(i,1,exerciseName)
         setExerciseNames(data)
