@@ -571,3 +571,21 @@ code {
   top: 16px;
   right: 16px;
 }
+
+#generateroutinestartform{
+  margin:0 auto;
+  display:block;
+}
+
+#sessionNameRoutineInputField{
+  margin:0 auto;
+  display:block;
+  margin-top: 10px;
+}
+#sessionNameRoutineInputField::placeholder{
+  text-align: center;
+}
+#submitroutineworkout{
+  margin:0 auto;
+  display:block;
+}
