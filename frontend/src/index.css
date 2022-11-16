@@ -211,11 +211,19 @@ code {
 
 #removeexercisebtn{  
   border: 0px;
-  color: red;
+  background-color: #e44444;
+  color: white;
   margin-top: 20px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+}
+#removeexercisebtn:hover{
+  background-color: #ed6969;
+}
+
+#removeexercisebtn:active{
+  background-color: #e42424;
 }
 
 #exerciseinputnamefield{
@@ -228,8 +236,16 @@ code {
 #removebtnforset{
   border: 0px;
   margin-left: 10px;
-  background-color: rgb(206, 31, 31);
+  background-color: #e44444;
   color: white;
+}
+
+#removebtnforset:hover{
+  background-color: #ed6969;
+}
+
+#removebtnforset:active{
+  background-color: #e42424;
 }
 
 .exerciseoptionsbtn{
@@ -257,16 +273,17 @@ code {
 }
 
 #donebtn{
-  color: rgb(48, 185, 2);
+  background-color: #39b491;
+  color: white;
   margin-left: 10px;
   border: 0px;
 }
 #donebtn:hover{
-  color: rgb(38, 147, 1);
+  background-color: #5fd0b0;
 }
 
 #donebtn:active{
-  color: rgb(26, 97, 3);
+  background-color: #2a8067;
 }
 
 #clearfields{
@@ -612,6 +629,7 @@ code {
   border: 0px;
   background-color: #39b491;
   color: white;
+  margin-top: 10px;
 }
 
 #submitexerciseroutineworkout:hover{
