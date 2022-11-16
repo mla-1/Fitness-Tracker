@@ -261,6 +261,13 @@ code {
   margin-left: 10px;
   border: 0px;
 }
+#donebtn:hover{
+  color: rgb(38, 147, 1);
+}
+
+#donebtn:active{
+  color: rgb(26, 97, 3);
+}
 
 #clearfields{
   border: 0px;
@@ -575,17 +582,45 @@ code {
 #generateroutinestartform{
   margin:0 auto;
   display:block;
+  margin-bottom: 10px;
+  background-color: black;
+  color: white;
 }
 
 #sessionNameRoutineInputField{
   margin:0 auto;
   display:block;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 #sessionNameRoutineInputField::placeholder{
   text-align: center;
 }
-#submitroutineworkout{
+
+#addexerciseroutinebtn{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0px;
+  background-color: black;
+  color: white;
+}
+
+#submitexerciseroutineworkout{
   margin:0 auto;
   display:block;
+  border: 0px;
+  background-color: #39b491;
+  color: white;
+}
+
+#submitexerciseroutineworkout:hover{
+  background-color: #5fd0b0;
+
+}
+#submitexerciseroutineworkout:active{
+  background-color: #2a8067;
+}
+#generateroutinestartform:hover,#addexerciseroutinebtn:hover {
+  background-color: rgb(79, 78, 78);
 }

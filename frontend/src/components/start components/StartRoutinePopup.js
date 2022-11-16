@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import Start from '../../pages/Start';
 import StartRoutineExerciseForm from './StartRoutineExerciseForm'
 
 const StartRoutinePopup = (props) => {
@@ -35,6 +34,11 @@ const StartRoutinePopup = (props) => {
           }
         setComponents(listofcomponents)
 
+        const listofexercisenames = []
+        props.currentroutine.exercises.map((exercise) => {
+            listofexercisenames.push(exercise.name)
+        })
+        setExerciseNames(listofexercisenames) 
     }
 
     const handleSessionName = (e) => {
@@ -46,14 +50,72 @@ const StartRoutinePopup = (props) => {
     }
 
     const removeExercise = (index) => {
-        let data = [...components]
-        data.splice(index,1)
-        setComponents(data)
+
+        //remove the component from the comp array
+        let compdata = [...components]
+        compdata.splice(index,1)
+        setComponents(compdata)
+
+        //remove the related set data
+        let setdata = [...exerciseSets]
+        setdata.splice(index,1)
+        setExerciseSets(setdata)
+        
+        //remove the exercise name from the exercises array
+        let namedata = [...exerciseNames]
+        namedata.splice(index,1)
+        setExerciseNames(namedata)
+
     }
 
-    const check = () =>{
-        console.log(components.length)
+    const check =  async (e) =>{
         console.log(sessionName)
+        console.log(exerciseNames)
+        console.log(exerciseSets)
+
+        let Session = {
+            SessionName: '',
+            SessionExercises : []
+        }
+
+        const cur_Session = Session
+
+        cur_Session.SessionName = sessionName
+
+        exerciseSets.map((item,i) => {
+            let exercise = {
+                name : '',
+                exercisesets : []
+            }
+            //const exercise = [exerciseNames[i], exerciseSets[i]]
+            const cur_exercise = exercise
+
+            cur_exercise.name = exerciseNames[i]
+            cur_exercise.exercisesets = exerciseSets[i]
+
+            cur_Session.SessionExercises.push(exercise)
+        })
+        console.log(cur_Session)
+
+        const response = await fetch('/api/workouts/session', {
+            method: 'POST',
+            body: JSON.stringify(cur_Session),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        const json = await response.json()
+
+        if(! response.ok){
+            setError(json.error)
+            console.log(error)
+        }
+
+        if(response.ok){
+            console.log(sessionName, " added!")
+        }
+
     }
 
     return (props.trigger) ? (
@@ -61,8 +123,7 @@ const StartRoutinePopup = (props) => {
             <div className="StartRoutinePopup-Inner">
                 <div>
                     <button id='generateroutinestartform'onClick={() => initialComponents() }> Generate </button>
-                    {/*<button onClick={() => check()}> check </button>
-                    */}
+                    <button id='addexerciseroutinebtn'onClick={addExercise}>Add Exercise</button>
                     <div>
                         <input id='sessionNameRoutineInputField'
                         name='sessionName'
@@ -74,15 +135,15 @@ const StartRoutinePopup = (props) => {
                     {components.map((component, index) => {
                         return (
                             <div key={index}>
-                                <button onClick={() => removeExercise(index)}> Remove Exercise</button>
+                                <button id="removeexercisebtn" onClick={() => removeExercise(index)}> Remove Exercise</button>
                                 <p></p>
-                                <StartRoutineExerciseForm/>
+                                <StartRoutineExerciseForm exerciseNames={exerciseNames} compindex={index} exerciseSets={exerciseSets} setExerciseNames={setExerciseNames} setExerciseSets={setExerciseSets}/>
                             </div>
                         )
                     })}
-                    <button id='submitroutineworkout' onClick={() => check()}> Submit</button>
+                    <button id='submitexerciseroutineworkout' onClick={() => check()}> Submit</button>
                 </div>
-                <button id='StartRoutinePopup-close' onClick={() => {props.setTrigger(false)}}>Close</button>
+                <button id='StartRoutinePopup-close' onClick={() => {props.setTrigger(false); }}>Close</button>
                 {props.children}
             </div>
         </div>
